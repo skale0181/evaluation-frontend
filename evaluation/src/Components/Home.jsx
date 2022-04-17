@@ -29,10 +29,11 @@ export const Home = ()=>{
     }
 
     const deleteitem = (id)=>{
-        axios.delete(`https://schooldata1.herokuapp.com/teachers/${id}`).then((res)=>{
+        axios.delete(`https://schooldata1.herokuapp.com/${id}`).then((res)=>{
             setdb(db.filter((item)=>{
                 return item._id!==id
             }))
+            setdb(db)
         })
     }
 
@@ -40,11 +41,11 @@ export const Home = ()=>{
         <div className="App" style={{margin:"auto"}}>
          
           <h3>Sort by Age</h3>
-          <Button onClick={()=>handlesorthtl}>High To Low</Button>
+          <Button onClick={handlesorthtl}>High To Low</Button>
           <Button>Low To High</Button>
           <h3>Filter by Gender</h3>
-          <Button onClick={handlefilter}>High To Low</Button>
-          <Button>Low To High</Button>
+          <Button onClick={()=>handlefilter(e)}>mail</Button>
+          <Button>female</Button>
           <table style={{margin:"auto"}}>
               <thead>
                   <tr>

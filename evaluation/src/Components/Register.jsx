@@ -33,6 +33,8 @@ export const Signup = ()=>{
         dispatch(signup({ name:form.name,email:form.email, password:form.password}))
         navigate("/login")
     }
+
+    const  disabled = name.length === 0 || password.length === 0
     return (
         <div className="login">
             <LoginBox>
@@ -42,7 +44,7 @@ export const Signup = ()=>{
             <input onChange={(e)=>{inputHandle(e)}} type="text" name="" id="email" placeholder="email"/> <br /> <br />
             <input onChange={(e)=>{inputHandle(e)}} type="text" name="" id="password" placeholder="Password"/> <br /> <br />
             <button onClick={()=>{handleSubmit()}}>Signup</button>
-            <h3 onClick={()=>navigate("/login")} style={{color:'blue', cursor:"pointer", fontWeight:"400", fontSize:"14px"}}>Already Have Account</h3>
+            <h3 onClick={()=>navigate("/login")} style={{color:'blue', cursor:"pointer", fontWeight:"400", fontSize:"14px"}}  disabled={disabled}>Already Have Account</h3>
             </LoginBox>
         </div>
     )
