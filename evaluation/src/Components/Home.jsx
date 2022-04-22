@@ -53,11 +53,25 @@ export const Home = () => {
 
   const handlesearch = () => {
     let searchteacher = teacher_data.filter((teacher) => {
-      dispatch(getdata());
       return teacher.name.toLowerCase().includes(search.toLowerCase());
     });
     dispatch(getDat(searchteacher));
-    // setSearch("");
+    setSearch("");
+  };
+  // const handlesearch = () => {
+  //  axios.get(`https://scholmybackend.herokuapp.com/teachers?q=${search}`)
+  //   .then(res => {
+  //     dispatch(getDat(res.data));
+  //     console.log(res.data);
+  //   }
+  //   )
+  //   .catch(err => {
+  //     // console.log(err);
+  //   }
+  //   )
+  // };
+  const handlereset = () => {
+    dispatch(getdata());
   };
 
   return (
@@ -66,6 +80,7 @@ export const Home = () => {
       <h1>Teacher Management</h1>
       <Sortingdiv>
         <Button
+        style={{margin: "5px"}}
           variant="contained"
           color="primary"
           onClick={() => sortByName(1)}
@@ -73,22 +88,31 @@ export const Home = () => {
           Get Data
         </Button>
         <Button
+         style={{margin: "5px"}}
           variant="contained"
           color="primary"
           onClick={() => sortByName(2)}
         >
           Get Data
         </Button>
+        </Sortingdiv>
+        <Sortingdiv>
+
+        <br />
         <input
+          style={{padding: "5px"}}
           type="text"
           placeholder="Search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-        />
-        <Button variant="contained" color="primary" onClick={handlesearch}>
+          />
+        <Button  style={{margin: "5px"}} variant="contained" color="primary" onClick={handlesearch}>
           Search
         </Button>
-      </Sortingdiv>
+          <Button  style={{margin: "5px"}} variant="contained" color="primary" onClick={handlereset}>
+          Reset
+        </Button>
+          </Sortingdiv>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
