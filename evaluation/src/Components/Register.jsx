@@ -10,7 +10,7 @@ height: 300px%;
 // border:2px solid green;
 margin: auto;
 margin-top: 10%;
-background-color: rgb(235,216,195);
+background-color:rgb(25,118,210);
 border-radius: 10px;
 padding: 10px;
 `

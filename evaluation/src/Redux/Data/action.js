@@ -1,6 +1,8 @@
 export const GET_TEACHERS_DATA = 'GET_DATA';
 export const GET_TEACHERS_DATA_LOADING = 'GET_DATA_LOADING';
 export const GET_TEACHERS_DATA_ERROR = 'GET_DATA_ERROR';
+export const GET_TEACHERS_DATA_ONE = 'GET_DATA_ONE';
+import axios from 'axios';
 
 export const getDat = (payload) => ({
     type: GET_TEACHERS_DATA,
@@ -15,6 +17,10 @@ export const getDatError = (err) => ({
     type: GET_TEACHERS_DATA_ERROR,
     err
 });
+export const getoneteacher =(payload)=>({
+    type:GET_TEACHERS_DATA_ONE,
+    payload
+})
 
 
 export const getdata = () => (dispatch) => {
@@ -25,7 +31,16 @@ export const getdata = () => (dispatch) => {
         .catch(error => dispatch(getDatError(error)));
 }
 
-
+export const getTeacher = (id) => (dispatch) => {
+    dispatch(getDatLoading());
+    return axios.get(`https://scholmybackend.herokuapp.com/teachers/${id}`).
+    then(response=>{
+        console.log(response.data)
+        dispatch(getoneteacher(response.data))
+    }).catch((err) => {
+        {dispatch(getDatError(err));
+        }});
+}
 
 
 

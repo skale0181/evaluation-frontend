@@ -14,7 +14,7 @@ export const Navbar = () => {
     const navigate = useNavigate()
   return (
     <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="relative" style={{backgroundColor:"rgb(204,112,75)"}}>
+    <AppBar position="relative" style={{backgroundColor:"rgb(25,118,210)"}}>
       <Toolbar>
         <IconButton
           size="large"

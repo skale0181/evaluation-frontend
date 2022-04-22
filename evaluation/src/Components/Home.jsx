@@ -25,16 +25,20 @@ const Sortingdiv = styled.div`
 `;
 
 export const Home = () => {
+  //-----------------use state-----------------for searching
   const [search, setSearch] = useState("");
+  //-----------------destructure from redux-----------------
   const { error, loading, teacher_data, success } = useSelector(
     (state) => state.data
   );
   const dispatch = useDispatch();
 
+  //-----------------use effect-----------------
   useEffect(() => {
     dispatch(getdata());
   }, []);
 
+  //-----------------sorting functionality-----------------
   const sortByName = (val) => {
     var data_;
     console.log(val);
@@ -50,7 +54,7 @@ export const Home = () => {
       dispatch(getDat(data_));
     }
   };
-
+//-----------------search functionality-----------------
   const handlesearch = () => {
     let searchteacher = teacher_data.filter((teacher) => {
       return teacher.name.toLowerCase().includes(search.toLowerCase());
@@ -70,6 +74,8 @@ export const Home = () => {
   //   }
   //   )
   // };
+
+  //-----------------rendering-----------------
   const handlereset = () => {
     dispatch(getdata());
   };
@@ -116,11 +122,12 @@ export const Home = () => {
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
-            <TableRow>
-              <TableCell>Index</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Age</TableCell>
-              <TableCell>Hobby</TableCell>
+            <TableRow style={{backgroundColor:"rgb(25,118,210)"}}>
+              <TableCell><b>Sr.No</b> </TableCell>
+              <TableCell><b>Name</b></TableCell>
+              <TableCell><b>Email</b></TableCell>
+              <TableCell><b>Age</b></TableCell>
+              <TableCell><b>Classes</b></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -128,6 +135,7 @@ export const Home = () => {
               <TableRow key={index}>
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>{teacher.name}</TableCell>
+                <TableCell>{teacher.email}</TableCell>
                 <TableCell>{teacher.age}</TableCell>
                 <Link to={`/teachers/${teacher._id}`}>classes</Link>
               </TableRow>

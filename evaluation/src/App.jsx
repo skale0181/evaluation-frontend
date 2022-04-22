@@ -6,6 +6,7 @@ import { Login } from './Components/Login'
 import { Navbar } from './Components/Navbar'
 import { Signup } from './Components/Register'
 import {useSelector} from 'react-redux'
+import { ShowTeacher } from './Components/ShowTeacher'
 // import {Register} from './Components/Register'
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<PrivateRoute isAuthenticated={isAuthenticated}><Home/></PrivateRoute>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
+        <Route path="/teachers/:id" element={<ShowTeacher/>} />
       
 
         </Routes>
