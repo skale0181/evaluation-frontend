@@ -31,7 +31,7 @@ export const Navbar = () => {
           
         </Typography>
         <Button color="inherit" onClick={()=>navigate("/login")}>Login</Button>
-        {/* <Button color="inherit" onClick={()=>navigate("/signup")}>Signup</Button> */}
+        <Button color="inherit" onClick={()=>navigate("/signup")}>Signup</Button>
       </Toolbar>
     </AppBar>
   </Box>

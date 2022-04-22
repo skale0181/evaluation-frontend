@@ -26,7 +26,7 @@ export const logout = () => ({
 export const login =({name,email,password})=> (dispatch) => {
     
     dispatch(loginLoading())
-    fetch('https://schooldata1.herokuapp.com/login', {
+    fetch('https://scholmybackend.herokuapp.com/login', {
         method: 'POST',
         body: JSON.stringify({name,email,password}),
         headers: {

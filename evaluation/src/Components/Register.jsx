@@ -22,7 +22,8 @@ export const Signup = ()=>{
     const [form, setForm] = useState({
        name:"",
        email:"",
-       password:""
+       password:"",
+       roles:""
     })
     const inputHandle = (e)=>{
          const {value, id} = e.target;
@@ -30,11 +31,11 @@ export const Signup = ()=>{
     }
 
     const handleSubmit = ()=>{
-        dispatch(signup({ name:form.name,email:form.email, password:form.password}))
+        dispatch(signup({ name:form.name,email:form.email, password:form.password, role:form.roles }))
         navigate("/login")
     }
 
-    const  disabled = name.length === 0 || password.length === 0
+    const  disabled = form.name.length === 0 || form.password.length === 0 || form.email.length === 0 || form.roles.length === 0;
     return (
         <div className="login">
             <LoginBox>
@@ -43,6 +44,7 @@ export const Signup = ()=>{
             <input onChange={(e)=>{inputHandle(e)}} type="text" name="" id="name" placeholder="name" /> <br /><br />
             <input onChange={(e)=>{inputHandle(e)}} type="text" name="" id="email" placeholder="email"/> <br /> <br />
             <input onChange={(e)=>{inputHandle(e)}} type="text" name="" id="password" placeholder="Password"/> <br /> <br />
+            <input onChange={(e)=>{inputHandle(e)}} type="text" name="" id="roles" placeholder="roles"/> <br /> <br />
             <button onClick={()=>{handleSubmit()}}>Signup</button>
             <h3 onClick={()=>navigate("/login")} style={{color:'blue', cursor:"pointer", fontWeight:"400", fontSize:"14px"}}  disabled={disabled}>Already Have Account</h3>
             </LoginBox>

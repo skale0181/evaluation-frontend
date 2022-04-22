@@ -15,14 +15,15 @@ export const signupFailure = ()=>({
     type:SIGNUP_FAILURE,
 })
 
-export const signup = ({name,email, password})=>(dispatch)=>{
+export const signup = ({name,email, password,roles})=>(dispatch)=>{
     dispatch(signupLoading())
-        fetch(`https://schooldata1.herokuapp.com/register`,{
+        fetch(`https://scholmybackend.herokuapp.com/register`,{
           method:"post",
           body:JSON.stringify({
               "name":name,
               "email":email,
-              "password":password
+              "password":password,
+              "roles":roles
             }),
           headers:{
               "Content-Type":"application/json"
@@ -30,3 +31,7 @@ export const signup = ({name,email, password})=>(dispatch)=>{
         }).then(res=>res.json()).then((res)=>dispatch(signupSuccess({email:email,token:res.token})))
         .catch(error=>dispatch(signupFailure()))
 }
+
+
+
+/////https://schooldata1.herokuapp.com/register
