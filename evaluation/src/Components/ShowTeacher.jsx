@@ -25,17 +25,17 @@ export const ShowTeacher = () => {
   return (
     <div className="container" key={teacher_data_one.id}>
         <h3>Teacher Details</h3>
-      <span className="pTag">Teacher Name : </span>
-      <span className="data"> {teacher_data_one.name}</span>
+      <span >Teacher Name : </span>
+      <span > {teacher_data_one.name}</span>
       <br />
-      <span className="pTag">Email : </span>
-      <span className="data"> {teacher_data_one.email}</span>
+      <span >Email : </span>
+      <span > {teacher_data_one.email}</span>
       <br />
-      <span className="pTag">Gender : </span>
-      <span className="data"> {teacher_data_one.gender}</span>
+      <span >Gender : </span>
+      <span > {teacher_data_one.gender}</span>
       <br />
-      <span className="pTag">Age : </span>
-      <span className="data"> {teacher_data_one.age}</span>
+      <span >Age : </span>
+      <span > {teacher_data_one.age}</span>
       <br />
 
       <h3 >Classes Details</h3>
@@ -43,12 +43,12 @@ export const ShowTeacher = () => {
         return (
           <div key={classe.id}>
               <h4>{index+1}</h4>
-            <span className="pTag"> Section : </span>
-            <span className="data"> {classe.section}</span><br />
-            <span className="pTag"> Subject : </span>
-            <span className="data"> {classe.subject}</span><br />
-            <span className="pTag"> Grade : </span>
-            <span className="data"> {classe.grade}</span><br />
+            <span > Section : </span>
+            <span > {classe.section}</span><br />
+            <span > Subject : </span>
+            <span > {classe.subject}</span><br />
+            <span > Grade : </span>
+            <span > {classe.grade}</span><br />
             <hr />
           </div>
         );

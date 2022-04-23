@@ -55,13 +55,14 @@ export const Home = () => {
     }
   };
 //-----------------search functionality-----------------
-  const handlesearch = () => {
-    let searchteacher = teacher_data.filter((teacher) => {
-      return teacher.name.toLowerCase().includes(search.toLowerCase());
-    });
-    dispatch(getDat(searchteacher));
-    setSearch("");
-  };
+  // const handlesearch = () => {
+    // let temp = teacher_data
+    // let searchteacher = temp.filter((teacher) => {
+    //   return teacher.name.toLowerCase().includes(search.toLowerCase());
+    // });
+    // dispatch(getDat(searchteacher));
+    // setSearch("");
+  // };
   // const handlesearch = () => {
   //  axios.get(`https://scholmybackend.herokuapp.com/teachers?q=${search}`)
   //   .then(res => {
@@ -77,7 +78,7 @@ export const Home = () => {
 
   //-----------------rendering-----------------
   const handlereset = () => {
-    dispatch(getdata());
+    setSearch("");
   };
 
   return (
@@ -91,7 +92,7 @@ export const Home = () => {
           color="primary"
           onClick={() => sortByName(1)}
         >
-          Get Data
+          Asen
         </Button>
         <Button
          style={{margin: "5px"}}
@@ -99,7 +100,7 @@ export const Home = () => {
           color="primary"
           onClick={() => sortByName(2)}
         >
-          Get Data
+          Dece
         </Button>
         </Sortingdiv>
         <Sortingdiv>
@@ -112,9 +113,9 @@ export const Home = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           />
-        <Button  style={{margin: "5px"}} variant="contained" color="primary" onClick={handlesearch}>
+        {/* <Button  style={{margin: "5px"}} variant="contained" color="primary" >
           Search
-        </Button>
+        </Button> */}
           <Button  style={{margin: "5px"}} variant="contained" color="primary" onClick={handlereset}>
           Reset
         </Button>
@@ -131,7 +132,9 @@ export const Home = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {teacher_data.map((teacher, index) => (
+            {teacher_data.filter((teacher) => {
+       return teacher.name.toLowerCase().includes(search.toLowerCase());
+     }).map((teacher, index) => (
               <TableRow key={index}>
                 <TableCell>{index + 1}</TableCell>
                 <TableCell>{teacher.name}</TableCell>

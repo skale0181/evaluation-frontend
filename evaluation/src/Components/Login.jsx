@@ -3,6 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, Navigate } from 'react-router-dom'
 import { login } from '../Redux/Login/action'
 import styled from 'styled-components'
+import Button from "@mui/material/Button";
+
+
+const Input = styled.input`
+padding: 5px;
+border-radius: 3px;
+margin: 5px;
+`
 
 const LoginBox = styled.div`
 width: 350px;
@@ -10,7 +18,7 @@ height: 300px%;
 // border:2px solid green;
 margin: auto;
 margin-top: 10%;
-background-color: rgb(25,118,210);
+background-color: #f5f5f5;
 border-radius: 10px;
 padding: 10px;
 `
@@ -46,7 +54,7 @@ export const Login = () => {
           
           <label >
             
-            <input type="text"
+            <Input type="text"
             placeholder='name'
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -56,7 +64,7 @@ export const Login = () => {
           <br />
           <label >
             
-            <input type="text"
+            <Input type="text"
             placeholder='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -66,7 +74,7 @@ export const Login = () => {
           <br />
             <label >
             
-            <input type="password"
+            <Input type="password"
             placeholder='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -74,7 +82,7 @@ export const Login = () => {
             </label>
             <br />
             <br />
-            <button disabled={disabled} onClick={handlelogin}>Login</button>
+            <Button  style={{margin: "5px"}} variant="contained" color="primary" disabled={disabled} onClick={handlelogin}>Login</Button>
             <hr />
             <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
 

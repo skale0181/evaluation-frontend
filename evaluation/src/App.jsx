@@ -7,6 +7,7 @@ import { Navbar } from './Components/Navbar'
 import { Signup } from './Components/Register'
 import {useSelector} from 'react-redux'
 import { ShowTeacher } from './Components/ShowTeacher'
+import { AddTeachers } from './Components/AddTeachers'
 // import {Register} from './Components/Register'
 
 
@@ -17,9 +18,9 @@ function App() {
     return isAuthenticated ? children : <Navigate to="/login"/>
   }
   //take isAthenticated from the redux store
-  // const {isAuthenticated} = useSelector(store => store.login)
+  const {isAuthenticated} = useSelector(store => store.login)
 
-  const isAuthenticated = true
+  // const isAuthenticated = true
 
   return (
     <div className="App">
@@ -31,7 +32,8 @@ function App() {
           <Route path="/" element={<PrivateRoute isAuthenticated={isAuthenticated}><Home/></PrivateRoute>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
-        <Route path="/teachers/:id" element={<ShowTeacher/>} />
+        <Route path="/teachers/:id" element={<PrivateRoute isAuthenticated={isAuthenticated}><ShowTeacher/></PrivateRoute>} />
+        <Route path="/add_teachers" element={<PrivateRoute isAuthenticated={isAuthenticated}><AddTeachers/></PrivateRoute>} />
       
 
         </Routes>
