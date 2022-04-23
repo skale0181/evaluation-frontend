@@ -6,6 +6,7 @@ const initialState = {
     isAuthenticated: false,
     token:"",
     username:"",
+    roles:''
 };
 
 export const loginReducer = (store=initialState, {type,payload}) => {
@@ -23,6 +24,7 @@ export const loginReducer = (store=initialState, {type,payload}) => {
                 isAuthenticated: true,
                 token: payload.token,
                 username: payload.username,
+                roles: payload.roles,
             };
         case LOGIN_FAILURE:
             return {
@@ -31,7 +33,8 @@ export const loginReducer = (store=initialState, {type,payload}) => {
                 error: true,
                 isAuthenticated: false,
                 token: "",
-                username: ""
+                username: "",
+                roles: ""
             };
         case "LOGOUT":
             return {...initialState}

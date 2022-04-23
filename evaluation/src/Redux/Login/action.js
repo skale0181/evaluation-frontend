@@ -33,7 +33,9 @@ export const login =({name,email,password})=> (dispatch) => {
             'Content-Type': 'application/json'
         }
     }).then(res => res.json())
-        .then(res => dispatch(loginSuccess({name,email,token:res.token})))
+        .then((res) => {dispatch(loginSuccess({token:res.token,roles:res.user.roles}))
+    console.log(res)
+    })
         .catch(err => dispatch(loginFailure(err)))
 }
 

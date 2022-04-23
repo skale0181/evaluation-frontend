@@ -20,7 +20,7 @@ const Formdiv = styled.div`
 
 export const AddTeachers = () => {
     const [data, setData] = React.useState({   });
-    
+    // const [err, setErr] = React.useState();
     //--------teachers data----------------------
     const [name, setName] = React.useState("");
     const [age, setAge] = React.useState("");
@@ -35,55 +35,69 @@ export const AddTeachers = () => {
     };
 
     const token = useSelector((store)=>store.login.token);
+    const roles = useSelector((store)=>store.login.roles[0]);
+    console.log(roles)
+    // console.log(error)
     // console.log(token)
     const handleSubmit = (e)=>{
         e.preventDefault(); 
-       
-        fetch('https://scholmybackend.herokuapp.com/classes', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        "Authorization": "Bearer " + token
-                    }
-                    , body: JSON.stringify(data)
-                }).then((res) => {
-                    res.json()
-                    .then((data) => {
-                        console.log(data); 
-                        setIds([...ids,data._id]); 
-                    })
-                })
-                .catch((err) => {
-                    console.log(err.message);   
-                    
-                })
-    }
+       if(roles!=="admin"){
+              alert("you are not admin")
+       }
+       else{
 
-    const handleAdd = ()=>{
-        const payload={
-            name,
-            email,
-            gender,
-            age,
-            class_id:ids
-        }
-        fetch('https://scholmybackend.herokuapp.com/teachers', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                "Authorization": "Bearer " + token
+           fetch('https://scholmybackend.herokuapp.com/classes', {
+                       method: 'POST',
+                       headers: {
+                           'Content-Type': 'application/json',
+                           "Authorization": "Bearer " + token
+                       }
+                       , body: JSON.stringify(data)
+                   }).then((res) => {
+                       res.json()
+                       .then((data) => {
+                           // console.log(data); 
+                           setIds([...ids,data._id]); 
+                       })
+                   })
+                   .catch((err) => {
+                       console.log(err);   
+                       
+                   })
+       }
             }
-            , body: JSON.stringify(payload)
-        }).then((res) => {
-            res.json()
-            .then((data) => {
-                console.log(data); 
-            })
-        })
-        .catch((err) => {
-            console.log(err.message);   
             
-        })
+            const handleAdd = ()=>{
+                const payload={
+                    name,
+                    email,
+                    gender,
+                    age,
+                    class_id:ids
+                }
+                if(roles!=="admin"){
+                    alert("you are not admin")
+                }
+                else{
+                    
+                    fetch('https://scholmybackend.herokuapp.com/teachers', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            "Authorization": "Bearer " + token
+                        }
+                        , body: JSON.stringify(payload)
+                    }).then((res) => {
+                        res.json()
+                        .then((data) => {
+                            console.log(data); 
+                        })
+                    })
+                    .catch((err) => {
+                        console.log(err.message);   
+                        
+                    })
+                }
     }
 
   return (

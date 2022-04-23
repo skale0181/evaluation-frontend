@@ -41,7 +41,7 @@ export const Signup = ()=>{
         navigate("/login")
     }
 
-    const  disabled = form.name.length === 0 || form.password.length === 0 || form.email.length === 0 || form.roles.length === 0;
+    const  disabled = form.name.length === 0 || form.password.length === 0 || form.email.length === 0 
     return (
         <div className="login" style={{marginBottom:"20px"}}>
             <LoginBox>

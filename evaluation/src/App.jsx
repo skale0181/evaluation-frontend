@@ -18,9 +18,9 @@ function App() {
     return isAuthenticated ? children : <Navigate to="/login"/>
   }
   //take isAthenticated from the redux store
-  const {isAuthenticated} = useSelector(store => store.login)
+  // const {isAuthenticated} = useSelector(store => store.login)
 
-  // const isAuthenticated = true
+  const isAuthenticated = true
 
   return (
     <div className="App">
